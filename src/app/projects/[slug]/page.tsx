@@ -5,12 +5,12 @@ import { ArrowLeft, ArrowUpRight, Download } from "lucide-react";
 
 import { GithubIcon } from "@/components/icons";
 import { externalLinkProps, LinkButton } from "@/components/link-button";
-import { LiveEmbed } from "@/components/live-embed";
+import { Lightbox } from "@/components/lightbox";
 import { MediaGallery } from "@/components/media-gallery";
 import { ProjectMedia } from "@/components/project-media";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { getProjectBySlug, projects } from "@/data/projectsData";
+import { getProjectBySlug, getShowcaseMedia, projects } from "@/data/projectsData";
 
 /** Every project page is known at build time, so all of them ship as static HTML. */
 export function generateStaticParams() {
@@ -37,6 +37,8 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
   if (!project) notFound();
 
   const hasGalleryMedia = project.media.some((item) => item.kind !== "icon");
+  const lead = getShowcaseMedia(project);
+  const leadIsImage = Boolean(lead && lead.kind !== "icon" && lead.kind !== "video");
 
   return (
     <article className="mx-auto w-full max-w-4xl px-6 py-16 sm:py-24">
@@ -90,13 +92,15 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
         </div>
       </header>
 
-      {/* Order matters: whatever proves the project works comes first. A live
-          copy beats a screenshot, a screenshot beats the fallback tile. */}
-      <div className="mt-14">
-        {project.embed ? (
-          <LiveEmbed embed={project.embed} />
+      {/* The lead image, at the picture's own proportions. Everything else is
+          in the gallery further down. */}
+      <div className="mt-12">
+        {leadIsImage && lead ? (
+          <Lightbox media={lead}>
+            <ProjectMedia project={project} naturalRatio priority />
+          </Lightbox>
         ) : (
-          <ProjectMedia project={project} ratio={16 / 9} priority />
+          <ProjectMedia project={project} naturalRatio priority />
         )}
       </div>
 
@@ -128,8 +132,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
         </ul>
       </section>
 
-      {/* Skipped entirely when the embed already showed the app in action and
-          there is nothing but an icon left to display. */}
+      {/* Skipped when the only media is the fallback icon. */}
       {hasGalleryMedia && (
         <div className="mt-14">
           <MediaGallery media={project.media} />
@@ -147,15 +150,6 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
         </div>
       </section>
 
-      <Separator className="my-14" />
-
-      <Link
-        href="/#projects"
-        className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-      >
-        <ArrowLeft className="size-4" />
-        Back to all projects
-      </Link>
     </article>
   );
 }

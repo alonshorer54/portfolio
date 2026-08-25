@@ -30,21 +30,6 @@ export interface ProjectLink {
   downloadLabel?: string;
 }
 
-/**
- * A running copy of the app, embedded in an iframe on the project page.
- *
- * Only set this for a site you control and have checked: a host that sends
- * `X-Frame-Options` or a `frame-ancestors` CSP will render a blank box instead,
- * and the browser gives the page no way to detect that it happened.
- */
-export interface ProjectEmbed {
-  url: string;
-  /** Described to screen readers, which cannot see into the frame. */
-  title: string;
-  /** Phone-shaped frame for a mobile-first app, laptop-shaped otherwise. */
-  frame: "phone" | "browser";
-}
-
 export interface Project {
   /** URL-safe id, also the folder name under `public/media/`. */
   slug: string;
@@ -62,8 +47,6 @@ export interface Project {
   year: number;
   links: ProjectLink;
   media: ProjectMedia[];
-  /** A live, interactive copy on the project page. Omit when there isn't one. */
-  embed?: ProjectEmbed;
   /** Exactly one project is the flagship; it gets the hero slot. */
   isFeatured: boolean;
   /** Local source path this entry was extracted from. Not rendered. */
@@ -75,7 +58,7 @@ export const projects: Project[] = [
     slug: "teams-fc",
     title: "Teams FC",
     tagline:
-      "A weekly five-a-side app that splits whoever showed up into balanced teams and settles the argument.",
+      "Builds balanced teams for a weekly football game out of whoever turned up, ready to paste into the group chat.",
     description:
       "An installable, Hebrew right-to-left PWA for organising a recurring football game. It keeps a squad with ratings, friendships and preferences, then splits the players who turned up into two or three balanced teams, explains what any manual edit broke, and exports the result straight into a WhatsApp group as text or an image. History, attendance trends and weekly payments are tracked alongside.",
     highlights: [
@@ -96,7 +79,7 @@ export const projects: Project[] = [
       "Netlify",
     ],
     context: "personal",
-    year: 2025,
+    year: 2026,
     links: {
       live: "https://teams-fc.netlify.app",
       repo: "https://github.com/alonshorer54/teams-fc",
@@ -131,13 +114,6 @@ export const projects: Project[] = [
         height: 512,
       },
     ],
-    // Checked: teams-fc.netlify.app sends no X-Frame-Options and no
-    // frame-ancestors CSP, so it renders inside the frame.
-    embed: {
-      url: "https://teams-fc.netlify.app",
-      title: "Teams FC running live",
-      frame: "phone",
-    },
     isFeatured: true,
     sourcePath: "D:/Projects/teams-fc",
   },
@@ -157,11 +133,25 @@ export const projects: Project[] = [
     ],
     stack: ["Python", "scikit-learn", "pandas", "NumPy", "Matplotlib", "joblib"],
     context: "academic",
-    year: 2025,
+    year: 2026,
     links: {
       repo: "https://github.com/alonshorer54/football-position-classifier",
     },
     media: [
+      {
+        src: "/media/football-position-classifier/evaluation.png",
+        alt: "Terminal output from evaluate_model.py: 89.0% accuracy, 0.905 macro precision, and a per-class report where goalkeepers score a perfect 1.000",
+        kind: "screenshot",
+        width: 2560,
+        height: 1932,
+      },
+      {
+        src: "/media/football-position-classifier/prediction.png",
+        alt: "Predicting one player from the command line — Mohamed Salah comes out MID at 55.4% against ATT at 44.6%, matching the dataset",
+        kind: "screenshot",
+        width: 2560,
+        height: 764,
+      },
       {
         src: "/media/football-position-classifier/confusion-matrix.png",
         alt: "Confusion matrix of the classifier on the held-out test set",
@@ -198,11 +188,19 @@ export const projects: Project[] = [
     ],
     stack: ["Java 17", "OOP design patterns", "Java Serialization", "Collections API"],
     context: "academic",
-    year: 2025,
+    year: 2026,
     links: {
       repo: "https://github.com/alonshorer54/college-management-system",
     },
-    media: [],
+    media: [
+      {
+        src: "/media/college-management-system/session.png",
+        alt: "A session in the console app: the menu, adding a professor with an article, the college salary average, lecturers sorted by salary, and the doctor-versus-professor comparison",
+        kind: "screenshot",
+        width: 2560,
+        height: 2496,
+      },
+    ],
     isFeatured: false,
     sourcePath: "D:/Projects/github-ready/college-management-system",
   },

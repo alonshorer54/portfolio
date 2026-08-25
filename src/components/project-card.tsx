@@ -84,7 +84,7 @@ export function ProjectCard({
         </div>
 
         <p className="flex items-center gap-1.5 pt-1 text-sm font-medium">
-          {featured && project.embed ? "Open it and try it" : "View project"}
+          View project
           <ArrowRight className="size-4 transition-transform group-hover/project:translate-x-0.5" />
         </p>
       </div>
