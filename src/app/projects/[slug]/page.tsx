@@ -36,9 +36,13 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
   const project = getProjectBySlug(slug);
   if (!project) notFound();
 
-  const hasGalleryMedia = project.media.some((item) => item.kind !== "icon");
   const lead = getShowcaseMedia(project);
   const leadIsImage = Boolean(lead && lead.kind !== "icon" && lead.kind !== "video");
+  // The lead doubles as a cover, so the gallery only has a job when there is
+  // something else to show.
+  const hasGalleryMedia = project.media.some(
+    (item) => item.kind !== "icon" && item.src !== lead?.src,
+  );
 
   return (
     <article className="mx-auto w-full max-w-4xl px-6 py-16 sm:py-24">
@@ -135,7 +139,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
       {/* Skipped when the only media is the fallback icon. */}
       {hasGalleryMedia && (
         <div className="mt-14">
-          <MediaGallery media={project.media} />
+          <MediaGallery media={project.media} exclude={lead} />
         </div>
       )}
 

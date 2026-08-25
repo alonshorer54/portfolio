@@ -60,7 +60,7 @@ export const projects: Project[] = [
     tagline:
       "Builds balanced teams for a weekly football game out of whoever turned up, ready to paste into the group chat.",
     description:
-      "An installable, Hebrew right-to-left PWA for organising a recurring football game. It keeps a squad with ratings, friendships and preferences, then splits the players who turned up into two or three balanced teams, explains what any manual edit broke, and exports the result straight into a WhatsApp group as text or an image. History, attendance trends and weekly payments are tracked alongside.",
+      "An installable PWA for organising a recurring football game. It keeps a squad with ratings, friendships and preferences, then splits the players who turned up into two or three balanced teams, explains what any manual edit broke, and exports the result straight into a WhatsApp group as text or an image. History, attendance trends and weekly payments are tracked alongside.",
     highlights: [
       "Balancing is a variant of the partition problem, solved heuristically: greedy construction with random noise, then hill-climbing over every pair swap, repeated 60 times with the best result kept — reaching a 0.00 rating gap in well under a second.",
       "Five weighted criteria — rating, friendships, learned pair chemistry, prefers-with/without affinity, and tag spread — each normalised to 0..1, with the priority order set in the UI and each rank worth roughly 6x the one below it.",
@@ -147,7 +147,7 @@ export const projects: Project[] = [
       },
       {
         src: "/media/football-position-classifier/prediction.png",
-        alt: "Predicting one player from the command line — Mohamed Salah comes out MID at 55.4% against ATT at 44.6%, matching the dataset",
+        alt: "Predicting one player from the command line — Erling Haaland comes out ATT at 99.6%, matching the dataset",
         kind: "screenshot",
         width: 2560,
         height: 764,

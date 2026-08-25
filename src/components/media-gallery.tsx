@@ -9,16 +9,26 @@ import type { ProjectMedia } from "@/data/projectsData";
  * App icons are filtered out — they are a fallback for the card thumbnail, not
  * something worth a gallery slot of their own.
  */
-export function MediaGallery({ media }: { media: ProjectMedia[] }) {
-  const items = media.filter((item) => item.kind !== "icon");
+export function MediaGallery({
+  media,
+  exclude,
+}: {
+  media: ProjectMedia[];
+  /** The cover image at the top of the page — no point repeating it here. */
+  exclude?: ProjectMedia;
+}) {
+  const items = media.filter(
+    (item) => item.kind !== "icon" && item.src !== exclude?.src,
+  );
   if (items.length === 0) return null;
 
   return (
     <section>
+      {/* No "click to enlarge" note: the cursor already turns into a
+          magnifier over anything that opens. */}
       <h2 className="font-heading text-xl font-semibold tracking-tight">
-        {items.length === 1 ? "Screenshot" : "Screens and results"}
+        {items.length === 1 ? "One more screen" : "More screens"}
       </h2>
-      <p className="mt-2 text-sm text-muted-foreground">Click any image to enlarge it.</p>
 
       <div className="mt-6 grid gap-6 sm:grid-cols-2">
         {items.map((item) => (
