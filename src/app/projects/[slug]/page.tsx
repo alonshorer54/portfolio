@@ -59,7 +59,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
           {project.title}
         </h1>
 
-        <p className="mt-5 text-lg leading-relaxed text-pretty text-muted-foreground">
+        <p className="mt-5 text-lg leading-relaxed text-pretty text-foreground/90">
           {project.tagline}
         </p>
 
@@ -106,7 +106,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
         <h2 className="font-heading text-xl font-semibold tracking-tight">
           What it is
         </h2>
-        <p className="mt-4 text-base leading-relaxed text-pretty text-muted-foreground">
+        <p className="mt-4 text-base leading-relaxed text-pretty text-foreground/85">
           {project.description}
         </p>
       </section>
@@ -122,7 +122,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
                 aria-hidden
                 className="mt-2.5 size-1.5 shrink-0 rounded-full bg-foreground/40"
               />
-              <span className="text-pretty text-muted-foreground">{highlight}</span>
+              <span className="text-pretty text-foreground/85">{highlight}</span>
             </li>
           ))}
         </ul>

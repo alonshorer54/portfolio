@@ -44,7 +44,7 @@ export function FeaturedProject({ project }: { project: Project }) {
               {project.title}
             </h2>
 
-            <p className="mt-4 text-lg leading-relaxed text-pretty text-muted-foreground">
+            <p className="mt-4 text-lg leading-relaxed text-pretty text-foreground/90">
               {project.tagline}
             </p>
 
@@ -56,7 +56,7 @@ export function FeaturedProject({ project }: { project: Project }) {
                     aria-hidden
                     className="mt-2 size-1.5 shrink-0 rounded-full bg-foreground/40"
                   />
-                  <span className="text-pretty text-muted-foreground">{highlight}</span>
+                  <span className="text-pretty text-foreground/80">{highlight}</span>
                 </li>
               ))}
             </ul>

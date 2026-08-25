@@ -8,7 +8,7 @@ export function ProjectsGrid({ projects }: { projects: Project[] }) {
       <div className="mx-auto w-full max-w-6xl px-6 py-20 sm:py-28">
         <SectionLabel>More projects</SectionLabel>
 
-        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-pretty text-muted-foreground">
+        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-pretty text-foreground/90">
           A machine-learning pipeline and an object-oriented design exercise. Open
           either one for the results, the screens, and how it was put together.
         </p>

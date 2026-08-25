@@ -1,6 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
-
-import { externalLinkProps, LinkButton } from "@/components/link-button";
 import type { ProjectEmbed } from "@/data/projectsData";
 
 /**
@@ -41,14 +38,10 @@ export function LiveEmbed({ embed }: { embed: ProjectEmbed }) {
         />
       </div>
 
-      <figcaption className="flex flex-col items-center gap-3 text-center">
-        <p className="text-sm text-muted-foreground">
-          This is the real app, running right here. Try it.
-        </p>
-        <LinkButton href={embed.url} size="sm" variant="outline" {...externalLinkProps}>
-          Open in a new tab
-          <ArrowUpRight data-icon="inline-end" />
-        </LinkButton>
+      {/* No "open in a new tab" button here — the Live demo button beside the
+          description already goes to the same place. */}
+      <figcaption className="text-center text-sm text-muted-foreground">
+        This is the real app, running right here. Try it.
       </figcaption>
     </figure>
   );

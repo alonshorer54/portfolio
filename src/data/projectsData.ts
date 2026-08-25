@@ -101,27 +101,31 @@ export const projects: Project[] = [
       live: "https://teams-fc.netlify.app",
       repo: "https://github.com/alonshorer54/teams-fc",
     },
-    // NOTE: the repository contains no screenshots and no video demo. The only
-    // media that exists is the PWA icon set, copied in below. Drop real
-    // screenshots into public/media/teams-fc/ and append them here.
     media: [
+      {
+        src: "/media/teams-fc/draw.png",
+        alt: "Three balanced teams after a draw — each on 24.4 rating, with a 0.0 gap and 6 of 7 friendships kept together",
+        kind: "screenshot",
+        width: 2880,
+        height: 1900,
+      },
+      {
+        src: "/media/teams-fc/squad.png",
+        alt: "The squad screen: 21 players with ratings, friendships, prefers-with/without notes and free-text tags",
+        kind: "screenshot",
+        width: 2880,
+        height: 1900,
+      },
+      {
+        src: "/media/teams-fc/trends.png",
+        alt: "Attendance over eight weeks, players drifting away, and the pairs that beat their expected win rate together",
+        kind: "screenshot",
+        width: 2880,
+        height: 1900,
+      },
       {
         src: "/media/teams-fc/icon-512.png",
         alt: "The Teams FC app icon",
-        kind: "icon",
-        width: 512,
-        height: 512,
-      },
-      {
-        src: "/media/teams-fc/maskable-512.png",
-        alt: "The Teams FC maskable app icon, as shown on an Android home screen",
-        kind: "icon",
-        width: 512,
-        height: 512,
-      },
-      {
-        src: "/media/teams-fc/favicon.svg",
-        alt: "The Teams FC logo",
         kind: "icon",
         width: 512,
         height: 512,

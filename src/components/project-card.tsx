@@ -43,7 +43,7 @@ export function ProjectCard({ project }: { project: Project }) {
           </p>
         </div>
 
-        <p className="text-sm leading-relaxed text-pretty text-muted-foreground">
+        <p className="text-sm leading-relaxed text-pretty text-foreground/80">
           {project.tagline}
         </p>
 
