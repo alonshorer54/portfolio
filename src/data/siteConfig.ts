@@ -26,7 +26,7 @@ export const siteConfig: SiteConfig = {
   name: "Alon Shorer",
   role: "Software Engineering Student",
   intro:
-    "Second year of four at Afeka Tel Aviv, and three years as a data analyst before that. I take projects end to end — to something deployed that people actually use.",
+    "Second year of four at Afeka Tel Aviv. I like taking a project from an idea all the way to something that runs.",
   location: "Israel",
   email: "alonshorer54@gmail.com",
   github: "https://github.com/alonshorer54",
