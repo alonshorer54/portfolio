@@ -26,11 +26,11 @@ export const siteConfig: SiteConfig = {
   name: "Alon Shorer",
   role: "Software Developer",
   intro:
-    "Software engineering student at Afeka Tel Aviv, building things that solve a problem I actually have — a team-balancing app my football group uses every week, an Android app that tells me which songs to delete. Everything below is running, not described.",
+    "Software engineering student at Afeka Tel Aviv, two years in. I build things that solve a problem I actually have — the team-balancing app below is what my football group uses every week. Everything here is running, not described.",
   location: "Israel",
   email: "alonshorer54@gmail.com",
   github: "https://github.com/alonshorer54",
-  linkedin: "",
+  linkedin: "https://www.linkedin.com/in/alon-shorer-6b59a5253/",
   cvPath: "/cv/alon-shorer-cv.pdf",
 };
 

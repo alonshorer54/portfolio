@@ -138,43 +138,6 @@ export const projects: Project[] = [
     sourcePath: "D:/Projects/teams-fc",
   },
   {
-    slug: "music-monitor",
-    title: "Music Monitor",
-    tagline:
-      "An Android app that watches which songs you skip and tells you what to delete — and what to listen to next.",
-    description:
-      "A Hebrew Android app that listens to the phone's local music player, measures how long each track was actually played, and counts anything abandoned inside 30 seconds as a skip. It surfaces two lists: songs you keep skipping, and new artists picked to match the style of what you finish. Everything runs on the device — there is no server and no account.",
-    highlights: [
-      "Skip tracking never touches the network: it reads MediaSessionManager metadata and writes to a local Room database, working identically in airplane mode.",
-      "Recommendations refresh once a week, only while charging and only on Wi-Fi, and send nothing but artist and track names — no identifier, no account, no timestamps, no skip data.",
-      "Taste analysis runs on the device; only its output, a list of names, ever leaves the phone.",
-      "No networking libraries at all — the five API calls use HttpURLConnection and org.json from the Android platform itself, so no Retrofit, no OkHttp, no JSON library.",
-      "The two files holding the real logic, PlaybackTracker and RecommendationEngine, are free of Android dependencies and covered by 20 JVM unit tests.",
-      "Locked down by default: HTTPS only via a network security config, backup and USB extraction disabled, and all logging stripped from the release build.",
-    ],
-    stack: [
-      "Kotlin",
-      "Jetpack Compose",
-      "Material 3",
-      "Room",
-      "WorkManager",
-      "MediaSessionManager",
-      "Last.fm API",
-      "Gradle (KSP)",
-    ],
-    context: "personal",
-    year: 2025,
-    // No public repository for this one yet, and an Android app cannot be
-    // embedded in a frame — the signed release build is the demo.
-    links: {
-      download: "/downloads/music-monitor-1.1.0.apk",
-      downloadLabel: "Download APK (1 MB)",
-    },
-    media: [],
-    isFeatured: false,
-    sourcePath: "D:/Projects/music-monitor",
-  },
-  {
     slug: "football-position-classifier",
     title: "Football Position Classifier",
     tagline:

@@ -9,9 +9,8 @@ export function ProjectsGrid({ projects }: { projects: Project[] }) {
         <SectionLabel>More projects</SectionLabel>
 
         <p className="mt-8 max-w-2xl text-lg leading-relaxed text-pretty text-muted-foreground">
-          An Android app, a machine-learning pipeline and an object-oriented design
-          exercise. Open any of them to see it running, the screens, and how it was
-          put together.
+          A machine-learning pipeline and an object-oriented design exercise. Open
+          either one for the results, the screens, and how it was put together.
         </p>
 
         {/* One column on a phone, two on a tablet, three on a laptop. */}
