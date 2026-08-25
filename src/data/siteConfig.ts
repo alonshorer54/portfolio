@@ -36,6 +36,5 @@ export const siteConfig: SiteConfig = {
 
 /** Anchor targets used by the header nav, kept in one place. */
 export const navItems = [
-  { href: "/#featured", label: "Featured" },
   { href: "/#projects", label: "Projects" },
 ] as const;

@@ -33,7 +33,7 @@ export function Hero() {
           {/* Stacks to full-width buttons on a phone, where thumb targets
               matter more than a tidy row. */}
           <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-            <LinkButton href="/#featured" size="lg">
+            <LinkButton href="/#projects" size="lg">
               <ArrowDown data-icon="inline-start" />
               See my work
             </LinkButton>

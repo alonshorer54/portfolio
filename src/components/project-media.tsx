@@ -7,8 +7,14 @@ import { getShowcaseMedia } from "@/data/projectsData";
 
 interface ProjectMediaProps {
   project: Project;
-  /** Width/height. 16/10 for the featured panel, 16/9 for grid thumbnails. */
+  /** Width/height. Grid thumbnails share one ratio so the row stays tidy. */
   ratio?: number;
+  /**
+   * Use the picture's own proportions instead of `ratio`. A screenshot letter-
+   * boxed inside a 16:9 box grows grey bars above and below it; on the large
+   * card, where the image is the point, it should fill its frame instead.
+   */
+  naturalRatio?: boolean;
   /** Set on the featured project only — it is above the fold. */
   priority?: boolean;
   className?: string;
@@ -25,14 +31,17 @@ interface ProjectMediaProps {
 export function ProjectMedia({
   project,
   ratio = 16 / 9,
+  naturalRatio = false,
   priority = false,
   className,
 }: ProjectMediaProps) {
   const media = getShowcaseMedia(project);
+  const shape =
+    naturalRatio && media && media.kind !== "icon" ? media.width / media.height : ratio;
 
   return (
     <AspectRatio
-      ratio={ratio}
+      ratio={shape}
       className={cn(
         "overflow-hidden rounded-xl bg-muted ring-1 ring-foreground/10",
         className,
@@ -47,7 +56,7 @@ export function ProjectMedia({
           fill
           priority={priority}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 620px"
-          className="object-contain p-4"
+          className={cn("object-contain", !naturalRatio && "p-4")}
         />
       ) : (
         <IconTile project={project} media={media} priority={priority} />
