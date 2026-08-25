@@ -9,7 +9,7 @@ export interface SiteConfig {
   name: string;
   /** Shown under the name in the hero. */
   role: string;
-  /** Two or three sentences. This is the elevator pitch. */
+  /** A sentence or two. This is the elevator pitch, not a biography. */
   intro: string;
   location: string;
   email: string;
@@ -24,9 +24,9 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   name: "Alon Shorer",
-  role: "Software Developer",
+  role: "Software Engineering Student",
   intro:
-    "Software engineering student at Afeka Tel Aviv, two years in. I build things that solve a problem I actually have — the team-balancing app below is what my football group uses every week. Everything here is running, not described.",
+    "Second year of four at Afeka Tel Aviv, and three years as a data analyst before that. I take projects end to end — to something deployed that people actually use.",
   location: "Israel",
   email: "alonshorer54@gmail.com",
   github: "https://github.com/alonshorer54",
