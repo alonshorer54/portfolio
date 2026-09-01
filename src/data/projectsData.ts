@@ -65,10 +65,10 @@ export const projects: Project[] = [
       "Balancing is a variant of the partition problem, solved heuristically: greedy construction with random noise, then hill-climbing over every pair swap, restarted 60 times in well under a second — half of that budget spent deliberately hunting for a different split rather than rediscovering the same optimum.",
       "Every restart is kept rather than only the cheapest: candidates within a per-criterion tolerance of the best — 0.05 on the average-rating gap — go into one pool, and the split that breaks up the most pairs from recent weeks wins. That is what makes \"draw again\" actually draw again.",
       "Five weighted criteria — rating, friendships, learned pair chemistry, prefers-with/without affinity, and tag spread — each normalised to 0..1, with the priority order set in the UI and each rank worth roughly 6x the one below it.",
-      "Learned chemistry is derived rather than configured: pairs that win together more often than their individual records predict are treated as extra strength and deliberately spread apart.",
+      "Learned chemistry is derived rather than configured: pairs that win together more often than their individual records predict count as hidden strength, and the draw equalises each team's total rather than banning the pairing — a lone strong pair gets split, two of them end up one per side. Off by default until the history is long enough to mean anything.",
       "No backend of its own — static files talking to Supabase directly, with access enforced by Postgres row-level security instead of client-side checks.",
       "Cross-device sync in three parts: load on sign-in, debounced save 900 ms after the last change, and a realtime channel; saves carry a data fingerprint so the app ignores the echo of its own write.",
-      "A single JSONB document per user, which is why tags, per-player preferences and the round format could all be added later without one schema migration.",
+      "Squad and history are JSONB columns rather than modelled tables, so tags and per-player preferences shipped without touching the schema. The draw settings did need one added column — and the client detects its absence and retries without it, so anyone who never ran that migration keeps working.",
     ],
     stack: [
       "TypeScript",
