@@ -30,7 +30,7 @@ export const siteConfig: SiteConfig = {
   location: "Israel",
   email: "alonshorer54@gmail.com",
   github: "https://github.com/alonshorer54",
-  linkedin: "https://www.linkedin.com/in/alon-shorer-6b59a5253/",
+  linkedin: "https://www.linkedin.com/in/alon-shorer",
   cvPath: "/cv/alon-shorer-cv.pdf",
 };
 

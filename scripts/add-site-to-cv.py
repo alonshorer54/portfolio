@@ -43,7 +43,7 @@ def build_items(site_url: str, site_label: str):
         ("github.com/alonshorer54", "https://github.com/alonshorer54"),
         (
             "linkedin.com/in/alon-shorer",
-            "https://www.linkedin.com/in/alon-shorer-6b59a5253/",
+            "https://www.linkedin.com/in/alon-shorer",
         ),
         (site_label, site_url),
     ]
