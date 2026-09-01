@@ -8,7 +8,7 @@ routes.
 
 | Route | What it is |
 | --- | --- |
-| `/` | Hero, the featured project running live, a grid of the rest, contact |
+| `/` | Hero, with the contact details, then every project in one grid |
 | `/projects/[slug]` | One page per project: live demo, screenshots, how it works, stack |
 
 Project pages are pre-rendered at build time from `generateStaticParams`, so all
@@ -52,36 +52,37 @@ Append an object to the `projects` array in `src/data/projectsData.ts`. The
 
 In order of how convincing they are:
 
-**1. A live embed.** Set `embed` and the running app appears in a device frame,
-on both the home page and the project page:
+**1. A video.** Put an MP4 or WebM in `public/media/<slug>/` and add it to
+`media` with `kind: "video"`. It plays muted, looping and inline, and it wins
+the card thumbnail over any screenshot.
 
-```ts
-embed: {
-  url: "https://your-app.example",
-  title: "Your app running live",
-  frame: "phone", // or "browser"
-}
-```
+**2. Screenshots and charts.** Same folder, `kind: "screenshot"` or `"chart"`.
+The first screenshot becomes the cover; everything else falls into the gallery
+lower down the project page.
 
-Only do this for a site you control **and have checked**. A host that sends
-`X-Frame-Options` or a `frame-ancestors` CSP renders a blank box instead, and
-the browser gives the page no way to detect that. Check with:
-
-```bash
-curl -sI https://your-app.example | grep -i -E "x-frame-options|content-security-policy"
-```
-
-Empty output means it will embed.
-
-**2. A video.** Put an MP4 or WebM in `public/media/<slug>/` and add it to
-`media` with `kind: "video"`. It plays muted, looping and inline.
-
-**3. Screenshots and charts.** Same folder, `kind: "screenshot"` or `"chart"`.
-
-**4. Nothing.** The card falls back to the app icon (`kind: "icon"`) or the
+**3. Nothing.** The card falls back to the app icon (`kind: "icon"`) or the
 project's initials, styled as a tile rather than left blank.
 
-Give every media entry an accurate `alt`, `width` and `height`.
+Give every media entry an accurate `alt`, and set `width` and `height` to the
+file's real pixel size — they reserve the space before the image loads, so a
+wrong ratio makes the page jump. Read them off the file rather than guessing:
+
+```bash
+python -c "from PIL import Image; print(Image.open('public/media/<slug>/<file>.png').size)"
+```
+
+### Linking to the project
+
+`links` holds up to three buttons, each rendered only when it is set:
+
+| Field | Button |
+| --- | --- |
+| `live` | **Live demo** — the running app |
+| `repo` | **Source code** — the GitHub repository |
+| `download` | A downloadable build, e.g. an APK. Label it with `downloadLabel`, saying what the file is |
+
+Files offered through `download` go in `public/` and are referenced by an
+absolute path, the same way media is.
 
 ### Adding your CV
 
