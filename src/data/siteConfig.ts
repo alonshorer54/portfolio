@@ -7,6 +7,12 @@
 
 export interface SiteConfig {
   name: string;
+  /**
+   * The canonical address, no trailing slash. The sitemap and the Open Graph
+   * tags need an absolute URL, and a relative one would silently resolve
+   * against whichever `.vercel.app` alias the visitor happened to arrive on.
+   */
+  url: string;
   /** Shown under the name in the hero. */
   role: string;
   /** A sentence or two. This is the elevator pitch, not a biography. */
@@ -24,6 +30,7 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   name: "Alon Shorer",
+  url: "https://alon-shorer.vercel.app",
   role: "Software Engineering Student",
   intro:
     "Second-year student at Afeka Tel Aviv. Passionate about building things that work.",

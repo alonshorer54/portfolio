@@ -16,9 +16,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  // Resolves the Open Graph image and the canonical link against the real
+  // address rather than the alias a visitor happened to land on.
+  metadataBase: new URL(siteConfig.url),
   title: `${siteConfig.name} — ${siteConfig.role}`,
   description: siteConfig.intro,
+  alternates: { canonical: "/" },
   openGraph: {
+    url: "/",
     title: `${siteConfig.name} — ${siteConfig.role}`,
     description: siteConfig.intro,
     type: "website",
