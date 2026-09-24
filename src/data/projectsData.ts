@@ -66,6 +66,8 @@ export const projects: Project[] = [
       "Every restart is kept rather than only the cheapest: candidates within a per-criterion tolerance of the best — 0.05 on the average-rating gap — go into one pool, and the split that breaks up the most pairs from recent weeks wins. That is what makes \"draw again\" actually draw again.",
       "Five weighted criteria — rating, friendships, learned pair chemistry, prefers-with/without affinity, and tag spread — each normalised to 0..1, with the priority order set in the UI and each rank worth roughly 6x the one below it.",
       "Learned chemistry is derived rather than configured: pairs that win together more often than their individual records predict count as hidden strength, and the draw equalises each team's total rather than banning the pairing — a lone strong pair gets split, two of them end up one per side. Off by default until the history is long enough to mean anything.",
+      "Ratings correct themselves from recorded results: each player carries a gauge of +1 per win and -1 per loss, with a drawn evening scoring 0 so perfectly balanced weeks move nobody. Every third round with a result, a gauge at ±3 shifts the rating by 0.1 and is reduced by 3 rather than reset, so no one moves more than 0.1 per check. Over 400 simulated seasons, a player winning 70% of evenings instead of a third gains 0.89 in 40 rounds.",
+      "A demo mode loads 21 invented players with no sign-up, so the draw, history and trends can be tried from the landing screen; nothing is saved and a refresh resets it.",
       "No backend of its own — static files talking to Supabase directly, with access enforced by Postgres row-level security instead of client-side checks.",
       "Cross-device sync in three parts: load on sign-in, debounced save 900 ms after the last change, and a realtime channel; saves carry a data fingerprint so the app ignores the echo of its own write.",
       "Squad and history are JSONB columns rather than modelled tables, so tags and per-player preferences shipped without touching the schema. The draw settings did need one added column — and the client detects its absence and retries without it, so anyone who never ran that migration keeps working.",
@@ -88,7 +90,7 @@ export const projects: Project[] = [
     media: [
       {
         src: "/media/teams-fc/draw.png",
-        alt: "Three balanced teams after a draw — each on 24.4 rating, with a 0.0 gap and 6 of 7 friendships kept together",
+        alt: "Three balanced teams after a draw — rated 24.5, 24.6 and 24.5, a 0.1 gap, with 6 of 7 friendships kept together",
         kind: "screenshot",
         width: 2880,
         height: 1900,
