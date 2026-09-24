@@ -90,7 +90,7 @@ export const projects: Project[] = [
     media: [
       {
         src: "/media/teams-fc/draw.png",
-        alt: "Three balanced teams after a draw — rated 24.5, 24.6 and 24.5, a 0.1 gap, with 6 of 7 friendships kept together",
+        alt: "Three balanced teams after a draw — rated 24.5, 24.5 and 24.6, a 0.1 gap, with 5 of 7 friendships kept together",
         kind: "screenshot",
         width: 2880,
         height: 1900,
