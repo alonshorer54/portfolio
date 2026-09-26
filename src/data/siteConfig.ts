@@ -33,15 +33,10 @@ export const siteConfig: SiteConfig = {
   url: "https://alon-shorer.vercel.app",
   role: "Software Engineering Student",
   intro:
-    "Student at Afeka Tel Aviv, two of four years completed, with 3+ years of experience as a data analyst. Passionate about building things that work.",
+    "Second-year student at Afeka Tel Aviv. Passionate about building things that work.",
   location: "Israel",
   email: "alonshorer54@gmail.com",
   github: "https://github.com/alonshorer54",
   linkedin: "https://www.linkedin.com/in/alon-shorer",
   cvPath: "/cv/alon-shorer-cv.pdf",
 };
-
-/** Anchor targets used by the header nav, kept in one place. */
-export const navItems = [
-  { href: "/#projects", label: "Projects" },
-] as const;
